@@ -6,9 +6,19 @@ public class Ecker_TankFuellung {
         Scanner scanner = new Scanner(System.in);
         double[] tankKilometers = input(scanner);
         double average = average(tankKilometers);
+        printAverage(average, tankKilometers);
+    }
 
-        System.out.println(average);
-
+    private static void printAverage(double average, double[] tankKilometers) {
+        System.out.print("[");
+        for (int i = 0; i < tankKilometers.length; i++) {
+            System.out.printf("%.0f", tankKilometers[i]);
+            if (i < tankKilometers.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.print("] --> ");
+        System.out.print(average);
     }
 
     private static double[] input(Scanner scanner) {
