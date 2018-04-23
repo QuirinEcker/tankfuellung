@@ -4,15 +4,15 @@ public class Ecker_TankFuellung {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        double[] tankKilometers = input(scanner);
+        int[] tankKilometers = input(scanner);
         double average = average(tankKilometers);
         printAverage(average, tankKilometers);
     }
 
-    private static void printAverage(double average, double[] tankKilometers) {
+    private static void printAverage(double average, int[] tankKilometers) {
         System.out.print("[");
         for (int i = 0; i < tankKilometers.length; i++) {
-            System.out.printf("%.0f", tankKilometers[i]);
+            System.out.printf("%d", tankKilometers[i]);
             if (i < tankKilometers.length - 1) {
                 System.out.print(", ");
             }
@@ -21,8 +21,8 @@ public class Ecker_TankFuellung {
         System.out.print(average);
     }
 
-    private static double[] input(Scanner scanner) {
-        double[] tankKilometers = new double[4];
+    private static int[] input(Scanner scanner) {
+        int[] tankKilometers = new int[4];
 
         for (int i = 0; i < tankKilometers.length; i++) {
             System.out.print(i + 1 + ": Tankwert: ");
@@ -31,15 +31,21 @@ public class Ecker_TankFuellung {
         return tankKilometers;
     }
 
-    private static double average(double[] tankKilometer) {
+    public static double average(int[] tankKilometer) {
         double average = 0;
         double tankKilometerSum = 0;
+        boolean isnull = tankKilometer.length == 0;
 
         for (int i = 0; i < tankKilometer.length; i++) {
             tankKilometerSum += tankKilometer[i];
         }
 
-        average = tankKilometerSum / tankKilometer.length;
+        if (isnull) {
+            average = -1;
+        } else {
+            average = tankKilometerSum / tankKilometer.length;
+        }
+
         return average;
     }
 
